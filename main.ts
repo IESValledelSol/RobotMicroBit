@@ -48,7 +48,7 @@ radio.onReceivedValue(function (name, value) {
     if (value == 1 && lastorder == name) {
         maqueen.motorStop(maqueen.Motors.All)
     }
-    if (yvalue > 750 && (xvalue > 250 && xvalue < 750)) {
+    if (yvalue >= 750 && (xvalue > 250 && xvalue < 750)) {
         lastorder = "JoystickAvanza"
         maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, velocity)
     } else {
@@ -56,7 +56,7 @@ radio.onReceivedValue(function (name, value) {
             maqueen.motorStop(maqueen.Motors.All)
         }
     }
-    if (xvalue > 750 && (yvalue > 250 && yvalue < 750)) {
+    if (xvalue >= 750 && (yvalue > 250 && yvalue < 750)) {
         lastorder = "JoystickDerecha"
         maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, velocity)
         maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, velocity)
@@ -65,7 +65,7 @@ radio.onReceivedValue(function (name, value) {
             maqueen.motorStop(maqueen.Motors.All)
         }
     }
-    if (yvalue < 250 && (xvalue > 250 && xvalue < 750)) {
+    if (yvalue <= 250 && (xvalue > 250 && xvalue < 750)) {
         lastorder = "JoystickRetrocede"
         maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CCW, velocity)
     } else {
@@ -73,7 +73,7 @@ radio.onReceivedValue(function (name, value) {
             maqueen.motorStop(maqueen.Motors.All)
         }
     }
-    if (xvalue < 250 && (yvalue > 250 && yvalue < 750)) {
+    if (xvalue <= 250 && (yvalue > 250 && yvalue < 750)) {
         lastorder = "JoystickIzquierda"
         maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, velocity)
         maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, velocity)
