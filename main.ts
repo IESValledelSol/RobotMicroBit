@@ -1,15 +1,28 @@
+maqueen.ltEvent(maqueen.Patrol1.PatrolRight, maqueen.Voltage.Low, function () {
+    maqueen.motorStop(maqueen.Motors.All)
+    velocity = 0
+})
+input.onButtonPressed(Button.A, function () {
+    velocity = 60
+})
+maqueen.ltEvent(maqueen.Patrol1.PatrolLeft, maqueen.Voltage.Low, function () {
+    maqueen.motorStop(maqueen.Motors.All)
+    velocity = 0
+})
 radio.onReceivedValue(function (name, value) {
-    if (name == "S") {
-        if (value == 0) {
-            if (velocity + 5 <= 255) {
-                velocity += 5
+    if (velocity > 0) {
+        if (name == "S") {
+            if (value == 0) {
+                if (velocity + 5 <= 255) {
+                    velocity += 5
+                }
             }
         }
-    }
-    if (name == "M") {
-        if (value == 0) {
-            if (velocity - 5 >= 0) {
-                velocity += -5
+        if (name == "M") {
+            if (value == 0) {
+                if (velocity - 5 >= 0) {
+                    velocity += -5
+                }
             }
         }
     }
@@ -87,5 +100,5 @@ let xvalue = 0
 let yvalue = 0
 let lastorder = ""
 let velocity = 0
-radio.setGroup(1)
-velocity = 60
+radio.setGroup(23)
+velocity = 0
