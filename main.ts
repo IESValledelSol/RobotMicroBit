@@ -1,13 +1,11 @@
 maqueen.ltEvent(maqueen.Patrol1.PatrolRight, maqueen.Voltage.Low, function () {
-    maqueen.motorStop(maqueen.Motors.All)
-    velocity = 0
+	
 })
 input.onButtonPressed(Button.A, function () {
-    velocity = 60
+	
 })
 maqueen.ltEvent(maqueen.Patrol1.PatrolLeft, maqueen.Voltage.Low, function () {
-    maqueen.motorStop(maqueen.Motors.All)
-    velocity = 0
+	
 })
 radio.onReceivedValue(function (name, value) {
     if (velocity > 0) {
@@ -27,29 +25,29 @@ radio.onReceivedValue(function (name, value) {
         }
     }
     if (name == "U") {
-        if (value == 0) {
-            lastorder = name
-            maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, velocity)
-        }
+    	
     }
     if (name == "D") {
-        if (value == 0) {
-            lastorder = name
-            maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CCW, velocity)
-        }
+    	
     }
     if (name == "L") {
         if (value == 0) {
-            lastorder = name
-            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, velocity)
-            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, velocity)
+            angulo = angulo - 1
+            if (angulo >= 0) {
+                pins.servoWritePin(AnalogPin.P2, angulo)
+            } else {
+                angulo = 0
+            }
         }
     }
     if (name == "R") {
         if (value == 0) {
-            lastorder = name
-            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, velocity)
-            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, velocity)
+            angulo = angulo + 1
+            if (angulo <= 180) {
+                pins.servoWritePin(AnalogPin.P2, angulo)
+            } else {
+                angulo = 180
+            }
         }
     }
     if (name == "Y") {
@@ -96,9 +94,12 @@ radio.onReceivedValue(function (name, value) {
         }
     }
 })
+let lastorder = ""
 let xvalue = 0
 let yvalue = 0
-let lastorder = ""
+let angulo = 0
 let velocity = 0
 radio.setGroup(23)
-velocity = 0
+velocity = 60
+pins.servoWritePin(AnalogPin.P2, 90)
+angulo = 90
