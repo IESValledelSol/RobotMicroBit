@@ -25,12 +25,16 @@ radio.onReceivedValue(function (name, value) {
         }
     }
     if (name == "U") {
-    	
+        if (value == 0) {
+            pins.digitalWritePin(DigitalPin.P1, 1)
+        }
     }
     if (name == "D") {
-    	
+        if (value == 0) {
+            pins.digitalWritePin(DigitalPin.P1, 0)
+        }
     }
-    if (name == "L") {
+    if (name == "R") {
         if (value == 0) {
             angulo = angulo - 1
             if (angulo >= 0) {
@@ -40,7 +44,7 @@ radio.onReceivedValue(function (name, value) {
             }
         }
     }
-    if (name == "R") {
+    if (name == "L") {
         if (value == 0) {
             angulo = angulo + 1
             if (angulo <= 180) {
