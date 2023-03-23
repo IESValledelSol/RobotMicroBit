@@ -1,12 +1,3 @@
-maqueen.ltEvent(maqueen.Patrol1.PatrolRight, maqueen.Voltage.Low, function () {
-	
-})
-input.onButtonPressed(Button.A, function () {
-	
-})
-maqueen.ltEvent(maqueen.Patrol1.PatrolLeft, maqueen.Voltage.Low, function () {
-	
-})
 radio.onReceivedValue(function (name, value) {
     if (velocity > 0) {
         if (name == "S") {
@@ -103,7 +94,8 @@ let xvalue = 0
 let yvalue = 0
 let angulo = 0
 let velocity = 0
-radio.setGroup(23)
+radio.setGroup(1)
 velocity = 60
 pins.servoWritePin(AnalogPin.P2, 90)
 angulo = 90
+basic.showIcon(IconNames.Yes)
