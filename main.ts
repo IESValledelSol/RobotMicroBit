@@ -1,20 +1,4 @@
 radio.onReceivedValue(function (name, value) {
-    if (velocity > 0) {
-        if (name == "S") {
-            if (value == 0) {
-                if (velocity + 5 <= 255) {
-                    velocity += 5
-                }
-            }
-        }
-        if (name == "M") {
-            if (value == 0) {
-                if (velocity - 5 >= 0) {
-                    velocity += -5
-                }
-            }
-        }
-    }
     if (name == "U") {
         if (value == 0) {
             pins.digitalWritePin(DigitalPin.P1, 1)
@@ -27,21 +11,21 @@ radio.onReceivedValue(function (name, value) {
     }
     if (name == "R") {
         if (value == 0) {
-            angulo = angulo - 1
-            if (angulo >= 0) {
+            angulo = angulo - 10
+            if (angulo >= minangle) {
                 pins.servoWritePin(AnalogPin.P2, angulo)
             } else {
-                angulo = 0
+                angulo = minangle
             }
         }
     }
     if (name == "L") {
         if (value == 0) {
-            angulo = angulo + 1
-            if (angulo <= 180) {
+            angulo = angulo + 10
+            if (angulo <= maxangle) {
                 pins.servoWritePin(AnalogPin.P2, angulo)
             } else {
-                angulo = 180
+                angulo = maxangle
             }
         }
     }
@@ -92,10 +76,14 @@ radio.onReceivedValue(function (name, value) {
 let lastorder = ""
 let xvalue = 0
 let yvalue = 0
+let minangle = 0
+let maxangle = 0
 let angulo = 0
 let velocity = 0
 radio.setGroup(1)
-velocity = 60
-pins.servoWritePin(AnalogPin.P2, 90)
+velocity = 255
 angulo = 90
+maxangle = 85
+minangle = 30
+pins.servoWritePin(AnalogPin.P2, maxangle)
 basic.showIcon(IconNames.Yes)
