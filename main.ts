@@ -1,15 +1,17 @@
+maqueen.ltEvent(maqueen.Patrol1.PatrolRight, maqueen.Voltage.Low, function () {
+    sensorder = 1
+    if (sensorizq == 1 && sensorder == 1) {
+        basic.showIcon(IconNames.No)
+    }
+})
+maqueen.ltEvent(maqueen.Patrol1.PatrolLeft, maqueen.Voltage.Low, function () {
+    sensorizq = 1
+    if (sensorizq == 1 && sensorder == 1) {
+        basic.showIcon(IconNames.No)
+    }
+})
 radio.onReceivedValue(function (name, value) {
     if (name == "U") {
-        if (value == 0) {
-            pins.digitalWritePin(DigitalPin.P1, 1)
-        }
-    }
-    if (name == "D") {
-        if (value == 0) {
-            pins.digitalWritePin(DigitalPin.P1, 0)
-        }
-    }
-    if (name == "R") {
         if (value == 0) {
             angulo = angulo - 10
             if (angulo >= minangle) {
@@ -19,7 +21,7 @@ radio.onReceivedValue(function (name, value) {
             }
         }
     }
-    if (name == "L") {
+    if (name == "D") {
         if (value == 0) {
             angulo = angulo + 10
             if (angulo <= maxangle) {
@@ -80,7 +82,11 @@ let minangle = 0
 let maxangle = 0
 let angulo = 0
 let velocity = 0
+let sensorder = 0
+let sensorizq = 0
 radio.setGroup(1)
+sensorizq = 0
+sensorder = 0
 velocity = 255
 angulo = 90
 maxangle = 85
