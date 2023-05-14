@@ -1,5 +1,16 @@
 ## Robot Maqueen (batalla de robots)
 
+![](https://github.com/IESValledelSol/RobotMicroBit/blob/master/20230514_200703.jpg)
+
+## Funcionamiento
+
+Basado en un robot Maqueen y en una tarjeta Micro:bit, el robot usado para la batalla de robots, incoprora un servo, una pala excavadora que puede subir y bajar y una plataforma diseñada por el alumnado con Tinkercad e impresa en el instituto. Se controla por medio de un joystick
+
+## Joystick
+
+## Diseños Tinkercad 3D
+
+https://www.tinkercad.com/things/kNVMxMdbnfQ
 
 ## Bloques
 
