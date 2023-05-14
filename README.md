@@ -8,6 +8,10 @@ Basado en un robot Maqueen y en una tarjeta Micro:bit, el robot usado para la ba
 
 ## Joystick
 
+La configuración del joystick usado en este proyecto lo puedes encontrar en el siguiente enlace
+
+https://github.com/IESValledelSol/JoystickMicroBit
+
 ## Diseños Tinkercad 3D
 
 https://www.tinkercad.com/things/kNVMxMdbnfQ
